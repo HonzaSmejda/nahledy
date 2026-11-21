@@ -1,0 +1,167 @@
+/* Šablona webu: mobil napřed, třídy podle BEM.
+   Vzhled se nastavuje jen v proměnných níže, podle zakazky/<klient>/designovy-smer.md.
+   Pravidla vzorníku: jedno zaoblení, 1 až 2 výrazné barvy, fotky nesou sekce. */
+
+:root {
+  --barva-znacky: #FF5B1F;          /* hlavní barva podniku */
+  --barva-tlacitka: #FF5B1F;      /* barva hlavního tlačítka */
+  --barva-na-tlacitku: #ffffff;
+  --pozadi: #F3F1EC;                      /* lomená bílá, ne čistě bílá */
+  --pozadi-tmave: #151412;
+  --text: #1c1c1a;
+  --text-tlumeny: #66625a;
+  --text-na-tmavem: #f4f4ef;
+  --zaobleni: 22px;                  /* jedna hodnota pro celý web */
+  --pismo-nadpisy: 'Archivo', system-ui, sans-serif;
+  --pismo-text: 'Inter', system-ui, sans-serif;
+  --obal: 1120px;
+  --mezera-sekce: clamp(64px, 12vw, 128px);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0;
+  background: var(--pozadi);
+  color: var(--text);
+  font: 400 1.0625rem/1.6 var(--pismo-text);
+  -webkit-font-smoothing: antialiased;
+}
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--barva-tlacitka);
+  outline-offset: 3px;
+}
+
+.obal { width: min(100% - 32px, var(--obal)); margin-inline: auto; }
+
+/* Tlačítka: pilulka, nejvýš jedno hlavní na sekci. */
+.tlacitko {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 2px solid var(--barva-tlacitka);
+  font: 600 1rem/1 var(--pismo-text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.tlacitko--hlavni { background: var(--barva-tlacitka); color: var(--barva-na-tlacitku); }
+.tlacitko--vedlejsi { background: transparent; color: inherit; }
+
+/* Hlavička */
+.hlavicka {
+  position: sticky; top: 0; z-index: 10;
+  background: var(--pozadi);
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+.hlavicka__obal { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 64px; }
+.hlavicka__menu-tlacitko {
+  background: none; border: 0; font: 600 1rem var(--pismo-text); padding: 8px 0; cursor: pointer;
+}
+.menu {
+  display: none;
+  position: absolute; inset: 64px 0 auto;
+  flex-direction: column; gap: 4px;
+  padding: 16px; background: var(--pozadi);
+  border-bottom: 1px solid rgba(0, 0, 0, .06);
+}
+.menu--otevrene { display: flex; }
+.menu__odkaz { padding: 12px 0; text-decoration: none; font-weight: 500; }
+.menu__tlacitko { margin-top: 8px; text-align: center; }
+@media (min-width: 900px) {
+  .hlavicka__menu-tlacitko { display: none; }
+  .menu { display: flex; position: static; flex-direction: row; align-items: center; gap: 28px; padding: 0; border: 0; }
+  .menu__tlacitko { margin: 0; }
+}
+
+/* Úvodní obrazovka: fotka přes celou šířku, text přes ni. */
+.uvod { position: relative; min-height: min(88vh, 760px); display: grid; align-items: end; color: #fff; }
+.uvod__fotka { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.uvod::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 60%); }
+.uvod__obsah { position: relative; z-index: 1; padding-block: 48px; }
+.uvod__nadpis {
+  margin: 0;
+  font: 800 clamp(2.75rem, 11vw, 6rem)/0.95 var(--pismo-nadpisy);
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.uvod__veta { margin: 16px 0 28px; max-width: 34ch; font-size: 1.15rem; }
+
+/* Sekce: střídání světlé a tmavé, jedno sdělení na sekci. */
+.sekce { padding-block: var(--mezera-sekce); }
+.sekce--tmava { background: var(--pozadi-tmave); color: var(--text-na-tmavem); }
+.sekce__nadpis {
+  margin: 0 0 32px;
+  font: 800 clamp(2rem, 7vw, 3.5rem)/1 var(--pismo-nadpisy);
+  letter-spacing: -0.015em;
+}
+.sekce__text { max-width: 58ch; font-size: 1.15rem; color: inherit; }
+
+/* Ceník */
+.cenik { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.cenik__polozka {
+  display: grid; grid-template-columns: 1fr auto; gap: 4px 16px;
+  padding: 18px 0; border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+.cenik__nazev { font-weight: 600; font-size: 1.125rem; }
+.cenik__popis { grid-column: 1; color: var(--text-tlumeny); font-size: .95rem; }
+.cenik__cena { grid-column: 2; grid-row: 1; font-weight: 700; white-space: nowrap; }
+
+/* Galerie: zaoblené fotky, na mobilu dva sloupce. */
+.galerie { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.galerie__fotka { border-radius: var(--zaobleni); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+@media (min-width: 900px) { .galerie { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+
+/* O nás */
+.o-nas { display: grid; gap: 32px; align-items: center; }
+.o-nas__fotka { border-radius: var(--zaobleni); aspect-ratio: 4 / 5; object-fit: cover; width: 100%; }
+@media (min-width: 900px) { .o-nas { grid-template-columns: 5fr 7fr; gap: 64px; } }
+
+/* Kontakt a formulář */
+.kontakt { display: grid; gap: 48px; }
+@media (min-width: 900px) { .kontakt { grid-template-columns: 1fr 1fr; } }
+.kontakt__radek { margin: 0 0 8px; font-size: 1.125rem; }
+.oteviraci-doba { display: grid; grid-template-columns: auto 1fr; gap: 4px 24px; margin: 24px 0; }
+.oteviraci-doba dd { margin: 0; }
+.formular { display: grid; gap: 16px; }
+.formular__pole { display: grid; gap: 6px; font-weight: 500; }
+.formular__pole input, .formular__pole textarea {
+  width: 100%; padding: 14px 16px;
+  border: 1px solid rgba(255, 255, 255, .25); border-radius: var(--zaobleni);
+  background: rgba(255, 255, 255, .06); color: inherit; font: inherit;
+}
+.formular__past { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.formular__souhlas { margin: 0; font-size: .875rem; opacity: .8; }
+.formular__stav { margin: 0; min-height: 1.5em; }
+
+/* Patička */
+.paticka { padding-block: 32px; font-size: .9rem; color: var(--text-tlumeny); }
+.paticka__obal { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; }
+.paticka p { margin: 0; }
+
+/* Zakázka Barber Ukázka (varianta B): tmavá hlavička, zúžené verzálky, tlačítko ve tvaru skvrny. */
+.hlavicka { background: var(--pozadi-tmave); color: var(--text-na-tmavem); border-color: rgba(255,255,255,.08); }
+.menu { background: var(--pozadi-tmave); }
+.hlavicka__menu-tlacitko { color: inherit; }
+.hlavicka__logo { font: 800 1.25rem/1 var(--pismo-nadpisy); font-stretch: 75%; text-transform: uppercase; letter-spacing: .02em; text-decoration: none; }
+.uvod { background: var(--pozadi-tmave); min-height: min(92vh, 780px); text-align: center; }
+.uvod__obsah { padding-block: 56px 72px; }
+.uvod__nadpis { font-weight: 900; font-stretch: 68%; text-transform: uppercase; font-size: clamp(3.5rem, 17vw, 8rem); line-height: .9; letter-spacing: 0; }
+.uvod__veta { margin-inline: auto; max-width: 26ch; color: #e2ded5; }
+.sekce__nadpis { font-stretch: 75%; font-weight: 850; }
+.tlacitko--skvrna {
+  background: var(--barva-tlacitka); color: var(--barva-na-tlacitku); border: 0;
+  padding: 22px 40px; font-size: 1.0625rem; font-weight: 700;
+  border-radius: 58% 42% 55% 45% / 48% 60% 40% 52%;
+  transition: border-radius .4s ease;
+}
+.tlacitko--skvrna:hover { border-radius: 45% 55% 42% 58% / 58% 42% 60% 40%; }
+@media (prefers-reduced-motion: reduce) { .tlacitko--skvrna { transition: none; } }
+.sekce__akce { margin: 40px 0 0; }
+.rezervace__misto {
+  border: 2px dashed rgba(255,255,255,.25); border-radius: var(--zaobleni);
+  padding: 40px 24px; text-align: center; color: #b9b4aa;
+}
+.paticka { background: var(--pozadi); }
