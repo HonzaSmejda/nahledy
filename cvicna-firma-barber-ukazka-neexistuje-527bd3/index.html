@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta name="robots" content="noindex, nofollow">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barber Ukázka | Praha</title>
+  <meta name="description" content="Barber Ukázka, Vodičkova 157, Praha. Pánské i dámské střihy, vousy a barvení. Ceník a online rezervace termínu. Cvičný web, firma neexistuje.">
+  <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400..700&display=swap">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="nahled-pruh" style="position:sticky;top:0;z-index:2147483647;background:#111;color:#fff;font:600 14px/1.4 system-ui,sans-serif;text-align:center;padding:8px 12px;">Náhled webu, není v provozu</div>
+  <header class="hlavicka">
+    <div class="obal hlavicka__obal">
+      <a class="hlavicka__logo" href="index.html">Barber Ukázka</a>
+      <button class="hlavicka__menu-tlacitko" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+      <nav class="menu" id="menu" aria-label="Hlavní navigace">
+        <a class="menu__odkaz" href="#cenik">Ceník</a>
+        <a class="menu__odkaz" href="#strihy">Střihy</a>
+        <a class="menu__odkaz" href="#michal">Michal</a>
+        <a class="menu__odkaz" href="#kontakt">Kontakt</a>
+        <a class="tlacitko tlacitko--hlavni menu__tlacitko" href="#rezervace">Rezervovat</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="uvod">
+      <img class="uvod__fotka" src="img/uvod.svg" alt="Detail složitého střihu z dílny Barber Ukázka" width="1000" height="1500">
+      <div class="obal uvod__obsah">
+        <h1 class="uvod__nadpis">Střihy, ne poslepu</h1>
+        <p class="uvod__veta">Složitější střihy i barvení. Termín si vybereš sám, i v noci.</p>
+        <a class="tlacitko tlacitko--skvrna" href="#rezervace">Chci termín</a>
+      </div>
+    </section>
+
+    <section class="sekce" id="cenik">
+      <div class="obal">
+        <h2 class="sekce__nadpis">Ceník</h2>
+        <ul class="cenik">
+          <li class="cenik__polozka">
+            <span class="cenik__nazev">Pánský střih</span>
+            <span class="cenik__popis">35 minut</span>
+            <span class="cenik__cena">550 Kč</span>
+          </li>
+          <li class="cenik__polozka">
+            <span class="cenik__nazev">Pánský střih a vousy</span>
+            <span class="cenik__popis">1 hodina</span>
+            <span class="cenik__cena">750 Kč</span>
+          </li>
+          <li class="cenik__polozka">
+            <span class="cenik__nazev">Dámský střih</span>
+            <span class="cenik__popis">1 hodina</span>
+            <span class="cenik__cena">800 Kč</span>
+          </li>
+          <li class="cenik__polozka">
+            <span class="cenik__nazev">Barvení</span>
+            <span class="cenik__popis">ke střihu, o hodinu déle</span>
+            <span class="cenik__cena">+350 Kč</span>
+          </li>
+        </ul>
+        <p class="sekce__akce"><a class="tlacitko tlacitko--hlavni" href="#rezervace">Vybrat termín</a></p>
+      </div>
+    </section>
+
+    <section class="sekce sekce--tmava" id="strihy">
+      <div class="obal">
+        <h2 class="sekce__nadpis">Na co si troufnu</h2>
+        <div class="galerie">
+          <img class="galerie__fotka" src="img/galerie-1.svg" alt="Ukázka střihu 1" width="800" height="1000" loading="lazy">
+          <img class="galerie__fotka" src="img/galerie-2.svg" alt="Ukázka střihu 2" width="800" height="1000" loading="lazy">
+          <img class="galerie__fotka" src="img/galerie-3.svg" alt="Ukázka střihu 3" width="800" height="1000" loading="lazy">
+          <img class="galerie__fotka" src="img/galerie-4.svg" alt="Ukázka střihu 4" width="800" height="1000" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="sekce" id="michal">
+      <div class="obal o-nas">
+        <img class="o-nas__fotka" src="img/michal.svg" alt="Michal při práci" width="800" height="1000" loading="lazy">
+        <div>
+          <h2 class="sekce__nadpis">Ahoj, jsem Michal</h2>
+          <p class="sekce__text">Klasický střih zvládnu poslepu. Nejvíc mě ale baví ty složitější, u kterých je co vymýšlet. Termín si vyber v kalendáři, ať se můžu věnovat nůžkám, ne zprávám.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="sekce sekce--tmava" id="kontakt">
+      <div class="obal kontakt">
+        <div id="rezervace" class="rezervace">
+          <h2 class="sekce__nadpis">Vyber si termín</h2>
+          <p class="sekce__text">Služba, čas, hotovo. Psát nemusíš.</p>
+          <!-- CVIČNĚ: rezervační služba ještě není vybraná. Sem přijde její kalendář nebo odkaz. -->
+          <div class="rezervace__misto">Sem přijde rezervační kalendář. Služba se vybere podle toho, jestli umí čekací dobu při barvení.</div>
+        </div>
+        <div>
+          <h2 class="sekce__nadpis">Kde mě najdeš</h2>
+          <p class="kontakt__radek">Vodičkova 157, Praha</p>
+          <dl class="oteviraci-doba">
+            <dt>Po až pá</dt><dd>10:00 až 17:00</dd>
+            <dt>So a ne</dt><dd>zavřeno</dd>
+          </dl>
+          <p class="kontakt__radek"><a href="tel:+420123456789">123 456 789</a></p>
+          <p class="kontakt__radek"><a href="mailto:bambus@tvojemama.com">bambus@tvojemama.com</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="paticka">
+    <div class="obal paticka__obal">
+      <p>Barber Ukázka · Vodičkova 157, Praha · Cvičný web, firma neexistuje</p>
+      <p><a href="ochrana-udaju.html">Ochrana osobních údajů</a></p>
+    </div>
+  </footer>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
